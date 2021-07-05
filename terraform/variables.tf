@@ -25,12 +25,7 @@ variable "private_subnet_2_cidr" {
 variable "private_subnet_3_cidr" {
   description = "Private Subnet 3 cidr block"
 }
-variable "instance_type" {
-
-}
-variable "instance_ami" {
-
-}
-variable "keyname" {
-  
-}
+variable instance_type {}
+variable instance_ami {}
+variable keyname {}
+variable ssh_key {} 

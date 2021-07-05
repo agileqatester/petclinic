@@ -29,6 +29,7 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 ```
 git clone https://github.com/aws-samples/amazon-eks-jenkins-terraform
 cd amazon-eks-jenkins-terraform
+mvn -N io.takari:maven:wrapper #to install wrapper
 ./mvnw package
 java -jar target/*.jar
 ```

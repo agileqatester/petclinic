@@ -16,10 +16,17 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
+#create key at AWS from private key local
+resource "aws_key_pair" "ssh-key" {
+    key_name = var.keyname
+    public_key = file(var.ssh_key)
+}
+
+
 resource "aws_instance" "jenkins-instance" {
   ami             = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type   = "t2.medium"
-  key_name        = "${var.keyname}"
+  instance_type   = var.instance_type
+  key_name        = var.keyname
   #vpc_id          = "${aws_vpc.development-vpc.id}"
   vpc_security_group_ids = ["${aws_security_group.sg_allow_ssh_jenkins.id}"]
   subnet_id          = "${aws_subnet.public-subnet-1.id}"

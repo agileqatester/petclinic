@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
-                    app = docker.build("ibuchh/petclinic-spinnaker-jenkins")
+                    app = docker.build("agileqa/petclinic")
                 }
             }
         }
@@ -51,8 +51,8 @@ pipeline {
         stage('Remove local images') {
             steps {
                 echo '=== Delete the local docker images ==='
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
+                sh("docker rmi -f agileqa/petclinic:latest || :")
+                sh("docker rmi -f agileqa/petclinic:$SHORT_COMMIT || :")
             }
         }
     }
